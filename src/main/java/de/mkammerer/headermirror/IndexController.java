@@ -1,5 +1,6 @@
 package de.mkammerer.headermirror;
 
+import io.micronaut.core.annotation.NonBlocking;
 import io.micronaut.http.HttpHeaders;
 import io.micronaut.http.MediaType;
 import io.micronaut.http.annotation.Controller;
@@ -15,6 +16,7 @@ public class IndexController {
     private static final Logger LOGGER = LoggerFactory.getLogger(IndexController.class);
 
     @Get(produces = MediaType.TEXT_PLAIN)
+    @NonBlocking
     public String index(HttpHeaders headers) {
         LOGGER.info("Got request");
 
@@ -28,7 +30,7 @@ public class IndexController {
                 sb.append(values.get(i));
 
                 if (i < values.size() - 1) {
-                    sb.append(", ");
+                    sb.append('\n');
                 }
             }
             sb.append("\n");
