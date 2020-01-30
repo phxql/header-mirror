@@ -1,0 +1,5 @@
+micronaut:
+    application:
+        name: header-mirror
+    server:
+        port: 12345
