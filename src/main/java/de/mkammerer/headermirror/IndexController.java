@@ -30,10 +30,10 @@ public class IndexController {
                 sb.append(values.get(i));
 
                 if (i < values.size() - 1) {
-                    sb.append('\n');
+                    sb.append(", ");
                 }
             }
-            sb.append("\n");
+            sb.append('\n');
         }
 
         return sb.toString();
