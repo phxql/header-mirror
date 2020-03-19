@@ -1,5 +1,6 @@
 package de.mkammerer.headermirror;
 
+import io.micronaut.context.annotation.Value;
 import io.micronaut.core.annotation.NonBlocking;
 import io.micronaut.http.HttpHeaders;
 import io.micronaut.http.MediaType;
@@ -15,12 +16,21 @@ import java.util.Map;
 public class IndexController {
     private static final Logger LOGGER = LoggerFactory.getLogger(IndexController.class);
 
+    private final int port;
+
+    public IndexController(@Value("${micronaut.server.port}") int port) {
+        this.port = port;
+    }
+
     @Get(produces = MediaType.TEXT_PLAIN)
     @NonBlocking
     public String index(HttpHeaders headers) {
-        LOGGER.info("Got request");
+        LOGGER.info("Got request on port {}", port);
 
         StringBuilder sb = new StringBuilder();
+        sb.append("> Handled request on port ");
+        sb.append(port);
+        sb.append('\n');
 
         for (Map.Entry<String, List<String>> header : headers) {
             sb.append(header.getKey());
