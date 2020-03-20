@@ -36,10 +36,11 @@ public class IndexController {
             sb.append(header.getKey());
             sb.append(": ");
             List<String> values = header.getValue();
-            for (int i = 0; i < values.size(); i++) {
+            int valueCount = values.size();
+            for (int i = 0; i < valueCount; i++) {
                 sb.append(values.get(i));
 
-                if (i < values.size() - 1) {
+                if (i < valueCount - 1) {
                     sb.append(", ");
                 }
             }
