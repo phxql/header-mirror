@@ -10,7 +10,6 @@ repositories {
     mavenCentral()
 }
 
-
 dependencies {
     annotationProcessor platform("io.micronaut:micronaut-bom:$micronautVersion")
     annotationProcessor "io.micronaut:micronaut-inject-java"
@@ -23,8 +22,6 @@ dependencies {
     runtimeOnly "ch.qos.logback:logback-classic:1.2.3"
 }
 
-mainClassName = "de.mkammerer.headermirror.Application"
-
 tasks.withType(JavaCompile) {
     options.encoding = "UTF-8"
     options.compilerArgs.add('-parameters')
@@ -35,5 +32,6 @@ shadowJar {
 }
 
 application {
+    mainClassName = 'de.mkammerer.headermirror.Application'
     applicationDefaultJvmArgs = ['-Xmx32M', '-Xmx64M', '-XX:+UseSerialGC']
 }
