@@ -6,6 +6,7 @@ import io.micronaut.http.HttpHeaders;
 import io.micronaut.http.MediaType;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
+import io.micronaut.http.annotation.PathVariable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,13 +23,15 @@ public class IndexController {
         this.port = port;
     }
 
-    @Get(produces = MediaType.TEXT_PLAIN)
+    @Get(uri = "{path:.*}", produces = MediaType.TEXT_PLAIN)
     @NonBlocking
-    public String index(HttpHeaders headers) {
-        LOGGER.info("Got request on port {}", port);
+    public String index(@PathVariable("path") String path, HttpHeaders headers) {
+        LOGGER.info("Got request for '/{}' on port {}", path, port);
 
         StringBuilder sb = new StringBuilder();
-        sb.append("> Handled request on port ");
+        sb.append("> Handled request for '/");
+        sb.append(path);
+        sb.append("' on port ");
         sb.append(port);
         sb.append('\n');
 
