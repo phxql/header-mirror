@@ -11,6 +11,11 @@ Useful for debugging stuff like the Keycloak Gatekeeper.
 1. `./gradlew run`
 1. Open http://localhost:12345/
 
+## Building
+
+1. `./gradlew build`
+1. See `build/distributions/` folder
+
 ## FAQ
 
 ### How can I change the port?
